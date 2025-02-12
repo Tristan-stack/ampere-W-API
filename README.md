@@ -7,10 +7,10 @@ This is a sophisticated energy monitoring dashboard built with modern web techno
 - **Real-time Monitoring**: Track energy usage and production data in real-time
 - **Interactive Data Visualization**: Multiple chart types and visualizations for data analysis
 - **Multi-level Access**: Role-based access control with different permission levels
-- **Weather Integration**: Built-in weather data integration for contextual analysis
+<!-- - **Weather Integration**: Built-in weather data integration for contextual analysis -->
 - **Interactive Building Map**: Floor-by-floor and building-wide energy monitoring
 - **Administrative Tools**: User management and system configuration capabilities
-- **Chat Interface**: Built-in chat functionality for team communication
+<!-- - **Chat Interface**: Built-in chat functionality for team communication -->
 - **Responsive Design**: Mobile-friendly interface using modern UI components
 
 ## Tech Stack

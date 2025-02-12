@@ -29,7 +29,7 @@ import {
 } from "@/components/ui/sidebar"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { useSidebar } from "@/components/ui/sidebar"
-import { ChatInterface } from "@/components/chat/chat-interface"
+// import { ChatInterface } from "@/components/chat/chat-interface"
 import ColorPicker from "@/components/colors"
 import { useData } from '@/app/(protected)/context/DataContext'
 import { usePathname } from 'next/navigation'
@@ -176,7 +176,9 @@ export function AppSidebar() {
               </SidebarGroupContent>
             </SidebarGroup>
 
-            <Separator className="my-2 mt-16 group-data-[state=collapsed]:hidden" />
+            {/* Intrerface du chat non utilisé pour le moment */}
+
+            {/* <Separator className="my-2 mt-16 group-data-[state=collapsed]:hidden" />
             <SidebarGroup className="flex-1 py-0 overflow-hidden">
               <SidebarGroupLabel className="py-0 text-neutral-400">Assistant IA</SidebarGroupLabel>
               <SidebarGroupContent className="py-0 h-full overflow-hidden">
@@ -202,7 +204,9 @@ export function AppSidebar() {
                 </SidebarMenu>
               </SidebarGroupContent>
 
-            </SidebarGroup>
+            </SidebarGroup> */}
+
+
           </div>
         </ScrollArea>
       </SidebarContent>

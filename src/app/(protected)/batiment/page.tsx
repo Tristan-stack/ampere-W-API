@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Info, Maximize2, Minimize2, Blocks } from "lucide-react"
 import { useData } from '../context/DataContext';
-import AmpyWeather from "@/components/ampy-weather";
+// import AmpyWeather from "@/components/ampy-weather";
 import { motion, AnimatePresence } from "framer-motion";
 import { useUser } from "@clerk/nextjs";
 import { createSwapy } from "swapy";
@@ -286,7 +286,7 @@ const Batiments = () => {
                         <h1 className="text-white text-2xl font-bold mb-3">Analyse des bâtiments</h1>
                         <div className="relative w-full space-y-4">
                             <Score score={efficiencyScore} />
-                            <AmpyWeather score={efficiencyScore} />
+                            {/* <AmpyWeather score={efficiencyScore} /> */}
                         </div>
                         <div>
                             <h3 className="text-neutral-300 text-sm 3xl:text-lg font-bold pb-0 lg:-pb-2 mt-2">Sélection des bâtiments</h3>

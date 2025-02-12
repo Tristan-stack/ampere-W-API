@@ -5,7 +5,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { TRPCReactProvider } from "@/trpc/react";
 import { ToastContainer, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { WeatherProvider } from '@/app/(protected)/context/WeatherContext';
+// import { WeatherProvider } from '@/app/(protected)/context/WeatherContext';
 import { ClientProvider } from '@/components/ClientProvider';
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <ClientProvider>
-        <WeatherProvider>
+        {/* <WeatherProvider> */}
           <html lang="en" className={`${GeistSans.variable} dark`}>
             <body>
               <TRPCReactProvider>{children}</TRPCReactProvider>
@@ -40,7 +40,7 @@ export default function RootLayout({
               />
             </body>
           </html>
-        </WeatherProvider>
+        {/* </WeatherProvider> */}
       </ClientProvider>
     </ClerkProvider>
   );

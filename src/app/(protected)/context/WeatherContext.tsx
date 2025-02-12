@@ -1,74 +1,76 @@
-'use client';
+// Contexte pour les données météo non utilisé pour le moment
 
-import { createContext, useContext, useState, useEffect } from 'react';
+// 'use client';
 
-interface WeatherData {
-    temperature: number;
-    humidity: number;
-    visibility: number;
-    cloudCover: number;
-    precipitation: number;
-    date: string;
-}
+// import { createContext, useContext, useState, useEffect } from 'react';
 
-interface WeatherContextType {
-    weatherData: WeatherData[];
-    isLoading: boolean;
-    error: string | null;
-}
+// interface WeatherData {
+//     temperature: number;
+//     humidity: number;
+//     visibility: number;
+//     cloudCover: number;
+//     precipitation: number;
+//     date: string;
+// }
 
-const WeatherContext = createContext<WeatherContextType | undefined>(undefined);
+// interface WeatherContextType {
+//     weatherData: WeatherData[];
+//     isLoading: boolean;
+//     error: string | null;
+// }
 
-export const WeatherProvider = ({ children }: { children: React.ReactNode }) => {
-    const [weatherData, setWeatherData] = useState<WeatherData[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+// const WeatherContext = createContext<WeatherContextType | undefined>(undefined);
 
-    useEffect(() => {
-        const fetchWeatherData = async () => {
-            try {
-                const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=48.8156&longitude=7.7905&hourly=temperature_2m,relative_humidity_2m,precipitation_probability,cloud_cover,visibility&past_days=7');
-                const data = await response.json();
+// export const WeatherProvider = ({ children }: { children: React.ReactNode }) => {
+//     const [weatherData, setWeatherData] = useState<WeatherData[]>([]);
+//     const [isLoading, setIsLoading] = useState(true);
+//     const [error, setError] = useState<string | null>(null);
 
-                const now = new Date();
-                const processedData = data.hourly.time
-                    .map((time: string, index: number) => {
-                        if (!time) return null;
-                        return {
-                            date: time,
-                            temperature: data.hourly.temperature_2m[index],
-                            humidity: data.hourly.relative_humidity_2m[index],
-                            visibility: data.hourly.visibility[index],
-                            cloudCover: data.hourly.cloud_cover[index],
-                            precipitation: data.hourly.precipitation_probability[index]
-                        };
-                    })
-                    .filter((item: WeatherData | null): item is WeatherData => item !== null && new Date(item.date) <= now);
+//     useEffect(() => {
+//         const fetchWeatherData = async () => {
+//             try {
+//                 const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=48.8156&longitude=7.7905&hourly=temperature_2m,relative_humidity_2m,precipitation_probability,cloud_cover,visibility&past_days=7');
+//                 const data = await response.json();
 
-                setWeatherData(processedData);
-            } catch (error) {
-                setError('Erreur lors de la récupération des données météo');
-            } finally {
-                setIsLoading(false);
-            }
-        };
+//                 const now = new Date();
+//                 const processedData = data.hourly.time
+//                     .map((time: string, index: number) => {
+//                         if (!time) return null;
+//                         return {
+//                             date: time,
+//                             temperature: data.hourly.temperature_2m[index],
+//                             humidity: data.hourly.relative_humidity_2m[index],
+//                             visibility: data.hourly.visibility[index],
+//                             cloudCover: data.hourly.cloud_cover[index],
+//                             precipitation: data.hourly.precipitation_probability[index]
+//                         };
+//                     })
+//                     .filter((item: WeatherData | null): item is WeatherData => item !== null && new Date(item.date) <= now);
 
-        fetchWeatherData();
-        const interval = setInterval(fetchWeatherData, 30 * 60 * 1000);
-        return () => clearInterval(interval);
-    }, []);
+//                 setWeatherData(processedData);
+//             } catch (error) {
+//                 setError('Erreur lors de la récupération des données météo');
+//             } finally {
+//                 setIsLoading(false);
+//             }
+//         };
 
-    return (
-        <WeatherContext.Provider value={{ weatherData, isLoading, error }}>
-            {children}
-        </WeatherContext.Provider>
-    );
-};
+//         fetchWeatherData();
+//         const interval = setInterval(fetchWeatherData, 30 * 60 * 1000);
+//         return () => clearInterval(interval);
+//     }, []);
 
-export const useWeather = () => {
-    const context = useContext(WeatherContext);
-    if (context === undefined) {
-        throw new Error('useWeather doit être utilisé à l\'intérieur d\'un WeatherProvider');
-    }
-    return context;
-}; 
+//     return (
+//         <WeatherContext.Provider value={{ weatherData, isLoading, error }}>
+//             {children}
+//         </WeatherContext.Provider>
+//     );
+// };
+
+// export const useWeather = () => {
+//     const context = useContext(WeatherContext);
+//     if (context === undefined) {
+//         throw new Error('useWeather doit être utilisé à l\'intérieur d\'un WeatherProvider');
+//     }
+//     return context;
+// }; 
